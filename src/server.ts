@@ -3,7 +3,7 @@ import "reflect-metadata";
 import app from "./app";
 import { sequelize } from "./config/database";
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
   try {
@@ -18,7 +18,8 @@ const startServer = async () => {
     }
 
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on port http://localhost:${PORT}`);
+      console.log(`🚀 Server running on port ${PORT}`);
+
     });
   } catch (dbError) {
     console.error("❌ DB connection failed. Retrying in 5s...");
