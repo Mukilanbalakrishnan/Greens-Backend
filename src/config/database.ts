@@ -25,7 +25,7 @@ import { YouTube_Shorts_videos } from "../models/youtubeshort.model"
 export const sequelize = new Sequelize({
   dialect: "mysql",
   host: process.env.DB_HOST || "localhost",
-  port: 3306,
+  port: Number(process.env.DB_PORT) || 3306,   // ✅ important fix
   username: process.env.DB_USER || "root",
   password: process.env.DB_PASSWORD || "password",
   database: process.env.DB_NAME || "app",
@@ -51,7 +51,8 @@ export const sequelize = new Sequelize({
     ProjectTech,
     VideoTestimonial,
     TechStack,
-    Admin, Contact
+    Admin,
+    Contact
   ],
   logging: false,
 });
