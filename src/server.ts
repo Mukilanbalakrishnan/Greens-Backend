@@ -9,6 +9,7 @@ const startServer = async () => {
   try {
     await sequelize.authenticate();
     console.log("✅ Database connected");
+    
 
     try {
       await sequelize.sync(); // ❌ remove alter in runtime
@@ -23,6 +24,10 @@ const startServer = async () => {
     });
   } catch (dbError) {
     console.error("❌ DB connection failed. Retrying in 5s...");
+    console.log("DB_HOST:", process.env.DB_HOST);
+console.log("DB_PORT:", process.env.DB_PORT);
+console.log("DB_NAME:", process.env.DB_NAME);
+
     setTimeout(startServer, 5000);
   }
 };
